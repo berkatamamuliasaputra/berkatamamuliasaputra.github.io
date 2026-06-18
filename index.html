@@ -37,7 +37,16 @@
         <div class="container mt-4" id="main-content">
             </div>
     </div>
-
+supabase.auth.onAuthStateChange((event, session) => {
+    if (session) {
+        document.getElementById('login-container').classList.add('hidden');
+        document.getElementById('dashboard-container').classList.remove('hidden');
+        loadPurchaseOrders(); // Panggil fungsi data otomatis
+    } else {
+        document.getElementById('login-container').classList.remove('hidden');
+        document.getElementById('dashboard-container').classList.add('hidden');
+    }
+});
     <script>
         const supabase = window.supabase.createClient('URL_ANDA', 'KEY_ANDA');
 
