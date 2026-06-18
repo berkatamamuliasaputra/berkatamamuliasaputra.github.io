@@ -14,20 +14,43 @@
 body{font-family:'Inter',sans-serif;background:#f1f5f9;color:#0f172a;height:100vh;overflow:hidden}
 /* ── Login ── */
 #login-screen{position:fixed;inset:0;background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 100%);display:flex;align-items:center;justify-content:center;z-index:999}
-.login-card{background:#fff;border-radius:20px;padding:40px;width:380px;max-width:92vw;box-shadow:0 25px 60px rgba(0,0,0,.3)}
+
+/* Perubahan: padding dikurangi dari 40px jadi 24px 30px, lebar dikecilkan dari 380px jadi 340px */
+.login-card{background:#fff;border-radius:16px;padding:24px 30px;width:340px;max-width:92vw;box-shadow:0 25px 60px rgba(0,0,0,.3)}
+
 .login-logo-wrap{text-align:center;margin-bottom:6px}
-.login-logo-img{width:220px;max-width:90%;height:auto;display:block;margin:0 auto 2px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.2))}
-.login-title{font-size:22px;font-weight:700;text-align:center;color:#0f172a}
-.login-sub{text-align:center;color:#64748b;font-size:13px;margin-top:4px;margin-bottom:28px}
-.field-lbl{font-size:12px;font-weight:600;color:#374151;margin-bottom:5px;display:block}
-.field-input{width:100%;height:42px;border:1.5px solid #e2e8f0;border-radius:10px;padding:0 12px;font-size:13px;font-family:inherit;outline:none;background:#f8fafc;transition:border .2s,box-shadow .2s}
-.field-input:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+
+/* Perubahan: ukuran logo diperkecil dari 220px jadi 130px agar hemat ruang vertikal */
+.login-logo-img{width:130px;max-width:90%;height:auto;display:block;margin:0 auto 2px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.2))}
+
+/* Perubahan: font judul diperkecil dari 22px jadi 18px */
+.login-title{font-size:18px;font-weight:700;text-align:center;color:#0f172a;line-height:1.3}
+
+/* Perubahan: jarak bawah dipotong dari 28px jadi 16px */
+.login-sub{text-align:center;color:#64748b;font-size:12.5px;margin-top:4px;margin-bottom:16px}
+
+/* Perubahan Dinamis: Font label diubah jadi uppercase, ukuran 11px, lebih elegan dan proporsional */
+.field-lbl{font-size:11px;font-weight:600;color:#4b5563;margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:0.5px}
+
+/* Perubahan Dinamis: Transisi diperhalus (all 0.25s) untuk efek interaktif saat diklik */
+.field-input{width:100%;height:38px;border:1.5px solid #e2e8f0;border-radius:8px;padding:0 12px;font-size:13px;font-family:inherit;outline:none;background:#f8fafc;transition:all 0.25s ease-in-out}
+
+/* Perubahan Dinamis: Latar belakang input jadi putih saat diklik, ada efek glow biru & sedikit naik (translateY) */
+.field-input:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,.15);transform:translateY(-1px)}
+
 .login-err{background:#fee2e2;color:#dc2626;border:1px solid #fca5a5;border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:16px;display:none}
-.btn-login{width:100%;height:44px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s;margin-top:8px}
+
+/* Perubahan: tinggi tombol Masuk disesuaikan dari 44px jadi 38px */
+.btn-login{width:100%;height:38px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:13.5px;font-weight:600;cursor:pointer;transition:background .2s;margin-top:4px}
 .btn-login:hover{background:#1d4ed8}
 .btn-login:disabled{background:#93c5fd;cursor:not-allowed}
 .pw-wrap{position:relative}
-.pw-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#94a3b8;cursor:pointer;font-size:13px}
+
+/* Perubahan Dinamis: Tombol mata (show password) diberi animasi transisi */
+.pw-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#94a3b8;cursor:pointer;font-size:13px;transition:all 0.2s ease}
+
+/* Perubahan Dinamis: Efek membesar (scale) dan berubah biru saat tombol mata disorot */
+.pw-toggle:hover{color:var(--blue);transform:translateY(-50%) scale(1.1)}
 /* ── App Layout ──
    PERBAIKAN: Hapus class d-flex dari #app di HTML.
    Gunakan hanya CSS + inline style JS untuk mengontrol visibilitas.
