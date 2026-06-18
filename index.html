@@ -47,8 +47,43 @@ supabase.auth.onAuthStateChange((event, session) => {
         document.getElementById('dashboard-container').classList.add('hidden');
     }
 });
+
+    async function loadPurchaseOrders() {
+    // Mengambil data dari tabel purchase_orders
+    const { data, error } = await supabase
+        .from('purchase_orders')
+        .select('*')
+        .order('tanggal', { ascending: false }); // PO terbaru di atas
+
+    if (error) {
+        alert('Gagal mengambil data: ' + error.message);
+        return;
+    }
+
+    let rows = '';
+    data.forEach(po => {
+        rows += `
+            <tr>
+                <td>${po.id_order}</td>
+                <td>${po.no_po}</td>
+                <td>${po.nama_customer}</td>
+                <td>${po.nama_item}</td>
+                <td>${po.total_beli.toLocaleString('id-ID')}</td>
+                <td>${po.grand_total.toLocaleString('id-ID')}</td>
+            </tr>`;
+    });
+
+    document.getElementById('main-content').innerHTML = `
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr><th>ID</th><th>No PO</th><th>Customer</th><th>Item</th><th>Total Beli</th><th>Grand Total</th></tr>
+            </thead>
+            <tbody>${rows}</tbody>
+        </table>
+    `;
+}
     <script>
-        const supabase = window.supabase.createClient('URL_ANDA', 'KEY_ANDA');
+        const supabase = window.supabase.createClient('URL_ANDA', '');
 
         // Logic Login
         document.getElementById('btn-login').onclick = async () => {
