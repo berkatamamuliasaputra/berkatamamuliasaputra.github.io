@@ -2,19 +2,38 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>BMS Monitoring Dashboard</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; }
-    iframe { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; border: none; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #f1f5f9; }
+    
+    /* Container untuk mengontrol skala */
+    .wrapper {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      transform-origin: top left;
+      /* Mengatur skala tampilan: 0.9 berarti 90% dari ukuran aslinya */
+      transform: scale(0.9); 
+      width: 111.11%; /* Kompensasi agar tetap memenuhi layar saat di-scale 0.9 */
+      height: 111.11%;
+    }
+
+    iframe { 
+      width: 100%; 
+      height: 100%; 
+      border: none; 
+    }
   </style>
 </head>
 <body>
-  <iframe
-    src="https://script.google.com/macros/s/AKfycbxzTpdd7AaOzBr7J9rJo-2OGKaM4YmqgnT84Iwt3ntd-J-Qvi3xugWIIqUX9jLJQXAY/exec"
-    allowfullscreen
-    allow="fullscreen">
-  </iframe>
+  <div class="wrapper">
+    <iframe
+      src="https://script.google.com/macros/s/AKfycbxzTpdd7AaOzBr7J9rJo-2OGKaM4YmqgnT84Iwt3ntd-J-Qvi3xugWIIqUX9jLJQXAY/exec"
+      allowfullscreen
+      allow="fullscreen">
+    </iframe>
+  </div>
 </body>
 </html>
