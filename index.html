@@ -4,87 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMS Monitoring Dashboard</title>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <style>
-        body { background: #f8fafc; font-family: sans-serif; }
-        .hidden { display: none !important; }
-        #login-container { height: 100vh; display: flex; align-items: center; justify-content: center; }
-        .login-card { width: 350px; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    </style>
-</head>
+    <link rel="stylesheet" href="css/style.css"> </head>
 <body>
-
-    <div id="login-container">
-        <div class="login-card">
-            <h4 class="text-center mb-3">Login BMS</h4>
-            <input type="email" id="email" class="form-control mb-2" placeholder="Email">
-            <input type="password" id="password" class="form-control mb-3" placeholder="Password">
-            <button id="btn-login" class="btn btn-primary w-100">Masuk</button>
-        </div>
-    </div>
-
-    <div id="dashboard-container" class="hidden">
-        <nav class="navbar navbar-dark bg-primary px-3">
-            <span class="navbar-brand">Dashboard Purchase Order</span>
-            <button class="btn btn-sm btn-outline-light" onclick="logout()">Logout</button>
-        </nav>
-        <div class="container mt-4">
-            <div id="main-content">
-                <p>Memuat data...</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Inisialisasi Supabase dengan Kunci Anda
-        const SUPABASE_URL = 'https://uogkyucwbaofwbcrcpvf.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_QunitsAo75z0AcQL0X6ygQ_KmNznscd'; 
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-        // Fungsi Login
-        document.getElementById('btn-login').onclick = async () => {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const { error } = await supabase.auth.signInWithPassword({ email, password });
-            
-            if (error) {
-                alert('Login Gagal: ' + error.message);
-            } else {
-                location.reload(); // Refresh untuk masuk ke dashboard
-            }
-        };
-
-        // Cek status login
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            if (session) {
-                document.getElementById('login-container').classList.add('hidden');
-                document.getElementById('dashboard-container').classList.remove('hidden');
-                loadPurchaseOrders();
-            }
-        });
-
-        // Fungsi ambil data PO
-        async function loadPurchaseOrders() {
-            const { data, error } = await supabase.from('purchase_orders').select('*');
-            if (error) {
-                document.getElementById('main-content').innerHTML = 'Error: ' + error.message;
-                return;
-            }
-            
-            let html = '<table class="table table-bordered bg-white"><thead><tr><th>ID</th><th>PO</th><th>Vendor</th><th>Total</th></tr></thead><tbody>';
-            data.forEach(po => {
-                html += `<tr><td>${po.id_order}</td><td>${po.no_po}</td><td>${po.vendor}</td><td>${po.grand_total}</td></tr>`;
-            });
-            html += '</tbody></table>';
-            document.getElementById('main-content').innerHTML = html;
-        }
-
-        function logout() {
-            supabase.auth.signOut().then(() => location.reload());
-        }
-    </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/script.js" defer></script> </body>
 </html>
