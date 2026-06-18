@@ -59,6 +59,31 @@
             supabase.auth.signOut();
             location.reload();
         }
+        // Tambahkan fungsi ini di dalam script.js Anda
+async function loadPurchaseOrders() {
+    // Pastikan nama tabel di Supabase sesuai, misalnya 'purchase_orders'
+    const { data, error } = await supabase
+        .from('purchase_orders')
+        .select('*'); // Mengambil semua kolom
+
+    if (error) {
+        console.error('Gagal ambil data:', error.message);
+        return;
+    }
+
+    const container = document.getElementById('main-content');
+    container.innerHTML = '<h3>Daftar Purchase Order</h3>';
+    
+    // Membuat tabel sederhana
+    let table = '<table class="table table-striped"><thead><tr><th>ID</th><th>Vendor</th><th>Total</th></tr></thead><tbody>';
+    
+    data.forEach(po => {
+        table += `<tr><td>${po.id}</td><td>${po.vendor_name}</td><td>${po.total_amount}</td></tr>`;
+    });
+    
+    table += '</tbody></table>';
+    container.innerHTML += table;
+}
     </script>
 </body>
 </html>
