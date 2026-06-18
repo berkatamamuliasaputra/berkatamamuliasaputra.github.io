@@ -1,0 +1,14 @@
+{
+  "name": "bms-monitoring-app",
+  "version": "1.0.0",
+  "description": "Aplikasi BMS Monitoring",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.0.0"
+  }
+}
