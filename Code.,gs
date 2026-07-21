@@ -1,5 +1,5 @@
-const SPREADSHEET_ID = '1XiD6IvxygNS0t9tHa2nSHHl6s3uE-CuQpO1ei9Q9QV4'; // 🔑 ID Spreadsheet
-const FOLDER_ID      = '1VpzFjXgWvctBQrYcNfIF2AllaPkJnMRC';               // 📁 ID Root Folder Google Drive (File Upload)
+const SPREADSHEET_ID = '--------------'; // 🔑 ID Spreadsheet
+const FOLDER_ID      = '--------------';               // 📁 ID Root Folder Google Drive (File Upload)
 
 function testDriveAccess() {
   // ── Langkah 1: Baca folder (scope read) ──────────────────────────────────
